@@ -1,0 +1,38 @@
+{
+  "name": "basic-code",
+  "version": "0.0.0",
+  "authors": [
+    "Filipe Araujo <filipe.alves.araujo@gmail.com>"
+  ],
+  "description": "",
+  "keywords": [
+    "akyral",
+    "code",
+    "code highlight",
+    "code highlighting",
+    "highlight",
+    "highlightjs",
+    "prismjs",
+    "polymer",
+    "web-components"
+  ],
+  "main": "basic-code.html",
+  "license": "MIT",
+  "homepage": "https://github.com/filaraujo/basic-code/",
+  "ignore": [
+    "**/.*",
+    "**/*.scss",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.4.2",
+    "highlightjs": "~8.3.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#~1.1.2"
+  }
+}

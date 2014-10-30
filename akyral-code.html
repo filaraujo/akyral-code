@@ -1,0 +1,125 @@
+<link rel="import" href="../polymer/polymer.html">
+<script src="../highlightjs/highlight.pack.js"></script>
+
+<!--
+Code highlighting web component built with highlightjs
+
+## Using the element
+Using the element is as simple as defining a `akyral-code` element.  Highlight.js will predict
+language type based on content for you.
+
+Example:
+
+    <akyral-code>
+        function $initHighlight(block, cls) {
+          try {
+            if (cls.search(/\bno\-highlight\b/) != -1)
+              return process(block, true, 0x0F) +
+                     ' class=""';
+          } catch (e) {
+            /* handle exception */
+          }
+          for (var i = 0 / 2; i < classes.length; i++) {
+            if (checkCondition(classes[i]) === undefined)
+              return /\d+[\s/]/g;
+          }
+        }
+    </akyral-code>
+
+## Theming
+By default akyral-code uses the `github` theme, you may declare another one by setting the theme
+attribute. You can reference [components/highlightjs](https://github.com/components/highlightjs/tree/master/styles)
+for other themes.
+
+Example:
+
+    <akyral-code theme="arta">
+        ...
+    </akyral-code>
+
+
+@element akyral-code
+@blurb Code highlighting web component built with highlightjs
+@status alpha
+@homepage http://filaraujo.github.io/akyral-code
+@demo demo.html
+-->
+
+<polymer-element name="akyral-code">
+    <template>
+        <style>
+            :host{
+                display:block;
+            }
+        </style>
+
+        <pre id="code"></pre>
+    </template>
+    <script>
+        (function(){
+            var authors = ['Filipe Araujo'],
+
+                stylesheet = document.createElement('link');
+
+            // setup stylesheet
+            stylesheet.type = 'text/css';
+            stylesheet.rel = 'stylesheet';
+
+            // config hljs
+            window.hljs.configure({
+                tabReplace: '  ',
+            });
+
+            Polymer('akyral-code', {
+
+                /**
+                 * The `author` attribute defines the initial author, setting
+                 * this value will add another author
+                 *
+                 * @attribute author
+                 * @type string
+                 * @default 'Filipe Araujo'
+                 */
+                set author(name){
+                    if(authors.indexOf(name) > 0){
+                        return;
+                    }
+                    authors = [].concat.apply(authors, [name]);
+                },
+
+                get author(){
+                    return authors;
+                },
+
+                publish: {
+                    /**
+                     * The `theme` will set the theme of highlightjs
+                     * https://github.com/components/highlightjs/tree/master/styles
+                     *
+                     * @attribute theme
+                     * @type string
+                     * @default 'github'
+                     */
+                     theme: 'github'
+                },
+
+                /**
+                 * The `<akyral-code>` element has been attached to DOM. It will create a
+                 * stylesheet and convert content into highlighted content.
+                 *
+                 * @method attached
+                 */
+                attached: function(){
+                    var styles = stylesheet.cloneNode();
+                    styles.href = '../highlightjs/styles/'+this.theme+'.css';
+
+                    this.shadowRoot.appendChild(styles);
+                    this.element.convertSheetsToStyles(this.shadowRoot);
+
+                    this.$.code.innerHTML = this.innerHTML;
+                    window.hljs.highlightBlock(this.$.code);
+                }
+            });
+        }());
+    </script>
+</polymer-element>

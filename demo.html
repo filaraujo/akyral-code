@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+    <head>
+        <script src="../platform/platform.js"></script>
+        <title>akyral-code Demo</title>
+        <link rel="import" href="akyral-code.html">
+    </head>
+
+    <body>
+
+        <akyral-code>
+            function $initHighlight(block, cls) {
+              try {
+                if (cls.search(/\bno\-highlight\b/) != -1)
+                  return process(block, true, 0x0F) +
+                         ' class=""';
+              } catch (e) {
+                /* handle exception */
+              }
+              for (var i = 0 / 2; i < classes.length; i++) {
+                if (checkCondition(classes[i]) === undefined)
+                  return /\d+[\s/]/g;
+              }
+            }
+        </akyral-code>
+
+        <akyral-code theme="arta">
+            @font-face {
+              font-family: Chunkfive; src: url('Chunkfive.otf');
+            }
+
+            body, .usertext {
+              color: #F0F0F0; background: #600;
+              font-family: Chunkfive, sans;
+            }
+
+            @import url(print.css);
+            @media print {
+              a[href^=http]::after {
+                content: attr(href)
+              }
+            }
+        </akyral-code>
+
+
+        <akyral-code theme="obsidian">
+            {
+               "glossary":{
+                  "title":"example glossary",
+                  "GlossDiv":{
+                     "title":"S",
+                     "GlossList":{
+                        "GlossEntry":{
+                           "ID":"SGML",
+                           "SortAs":"SGML",
+                           "GlossTerm":"Standard Generalized Markup Language",
+                           "Acronym":"SGML",
+                           "Abbrev":"ISO 8879:1986",
+                           "GlossDef":{
+                              "para":"A meta-markup language, used to create markup languages such as DocBook.",
+                              "GlossSeeAlso":[
+                                 "GML",
+                                 "XML"
+                              ]
+                           },
+                           "GlossSee":"markup"
+                        }
+                     }
+                  }
+               }
+            }
+        </akyral-code>
+    </body>
+
+</html>
