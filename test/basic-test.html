@@ -16,7 +16,7 @@
     <body>
 
 
-        <akyral-code id="code">
+        <code is="akyral-code" id="code">
             function $initHighlight(block, cls) {
               try {
                 if (cls.search(/\bno\-highlight\b/) != -1)
@@ -30,9 +30,9 @@
                   return /\d+[\s/]/g;
               }
             }
-        </akyral-code>
+        </code>
 
-        <akyral-code id="code-theme" theme="arta">
+        <code is="akyral-code" id="code-theme" theme="arta">
             function $initHighlight(block, cls) {
               try {
                 if (cls.search(/\bno\-highlight\b/) != -1)
@@ -46,7 +46,7 @@
                   return /\d+[\s/]/g;
               }
             }
-        </akyral-code>
+        </code>
 
         <script>
             var codeEl = document.querySelector('#code'),

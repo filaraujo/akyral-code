@@ -9,7 +9,7 @@
 
     <body>
 
-        <akyral-code>
+        <code is="akyral-code">
             function $initHighlight(block, cls) {
               try {
                 if (cls.search(/\bno\-highlight\b/) != -1)
@@ -23,9 +23,9 @@
                   return /\d+[\s/]/g;
               }
             }
-        </akyral-code>
+        </code>
 
-        <akyral-code theme="arta">
+        <code is="akyral-code" theme="arta">
             @font-face {
               font-family: Chunkfive; src: url('Chunkfive.otf');
             }
@@ -41,10 +41,10 @@
                 content: attr(href)
               }
             }
-        </akyral-code>
+        </code>
 
 
-        <akyral-code theme="obsidian">
+        <code is="akyral-code" theme="obsidian">
             {
                "glossary":{
                   "title":"example glossary",
@@ -70,7 +70,7 @@
                   }
                }
             }
-        </akyral-code>
+        </code>
     </body>
 
 </html>

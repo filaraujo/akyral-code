@@ -5,12 +5,13 @@
 Code highlighting web component built with highlightjs
 
 ## Using the element
-Using the element is as simple as defining a `akyral-code` element.  Highlight.js will predict
-language type based on content for you.
+akyral-code extends the code element, so using the element is as simple as defining a `code`
+element with an `akyral-code' is attribute. Highlight.js will predict language type based
+on content for you.
 
 Example:
 
-    <akyral-code>
+    <code is="akyral-code">
         function $initHighlight(block, cls) {
           try {
             if (cls.search(/\bno\-highlight\b/) != -1)
@@ -24,7 +25,7 @@ Example:
               return /\d+[\s/]/g;
           }
         }
-    </akyral-code>
+    </code>
 
 ## Theming
 By default akyral-code uses the `github` theme, you may declare another one by setting the theme
@@ -33,9 +34,9 @@ for other themes.
 
 Example:
 
-    <akyral-code theme="arta">
+    <code is="akyral-code" theme="arta">
         ...
-    </akyral-code>
+    </code>
 
 
 @element akyral-code
@@ -45,11 +46,16 @@ Example:
 @demo demo.html
 -->
 
-<polymer-element name="akyral-code">
+<polymer-element name="akyral-code" extends="code">
     <template>
         <style>
             :host{
-                display:block;
+                display: block;
+            }
+
+            pre {
+                margin: 0;
+                padding: 0 !important;
             }
         </style>
 
