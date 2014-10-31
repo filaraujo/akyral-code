@@ -116,15 +116,31 @@ Example:
                  * @method attached
                  */
                 attached: function(){
-                    var styles = stylesheet.cloneNode();
+                    var styles = stylesheet.cloneNode(),
+                        observer;
+
                     styles.href = '../highlightjs/styles/'+this.theme+'.css';
 
                     this.shadowRoot.appendChild(styles);
                     this.element.convertSheetsToStyles(this.shadowRoot);
 
+                    observer = new MutationObserver(function() {
+                        this.job('akyral-code-highlight', this.highlight, 250);
+                    }.bind(this));
+
+                    observer.observe(this, {
+                        childList: true,
+                        characterData: true,
+                        subtree: true
+                    });
+
+                    this.highlight();
+                },
+
+                highlight: function(){
                     this.$.code.innerHTML = this.innerHTML;
                     window.hljs.highlightBlock(this.$.code);
-                }
+                },
             });
         }());
     </script>
