@@ -1,6 +1,6 @@
 {
-  "name": "basic-code",
-  "version": "1.2.0",
+  "name": "akyral-code",
+  "version": "1.2.1",
   "authors": [
     "Filipe Araujo <filipe.alves.araujo@gmail.com>"
   ],
@@ -16,9 +16,9 @@
     "polymer",
     "web-components"
   ],
-  "main": "basic-code.html",
+  "main": "akyral-code.html",
   "license": "MIT",
-  "homepage": "https://github.com/filaraujo/basic-code/",
+  "homepage": "https://github.com/filaraujo/akyral-code/",
   "ignore": [
     "**/.*",
     "**/*.scss",
