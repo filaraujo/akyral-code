@@ -1,10 +1,10 @@
 {
   "name": "akyral-code",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "authors": [
     "Filipe Araujo <filipe.alves.araujo@gmail.com>"
   ],
-  "description": "",
+  "description": "Code highlighting web component built with highlightjs",
   "keywords": [
     "akyral",
     "code",
