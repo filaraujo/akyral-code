@@ -58,7 +58,7 @@ Example:
             }
         </style>
 
-        <pre id="code"></pre>
+        <pre id="code" class="{{ type }}"></pre>
     </template>
     <script>
         (function(){
@@ -97,6 +97,7 @@ Example:
                 },
 
                 publish: {
+
                     /**
                      * The `theme` will set the theme of highlightjs
                      * https://github.com/components/highlightjs/tree/master/styles
@@ -105,7 +106,16 @@ Example:
                      * @type string
                      * @default 'github'
                      */
-                     theme: 'github'
+                     theme: 'github',
+
+                     /**
+                     * The `type` will set the type on highlight
+                     *
+                     * @attribute type
+                     * @type string
+                     * @default undefined
+                     */
+                     type: undefined
                 },
 
                 /**
