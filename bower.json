@@ -29,10 +29,10 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~0.5.1",
+    "polymer": "~0.5.2",
     "highlightjs": "~8.3.0"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester#~1.1.2"
+    "web-component-tester": "~2.0.5"
   }
 }
