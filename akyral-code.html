@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <script src="../highlightjs/highlight.pack.js"></script>
+<link rel="stylesheet" href="../highlightjs/styles/github.css">
 
 <!--
 Code highlighting web component built with highlightjs
@@ -27,7 +28,7 @@ Example:
         }
     </code>
 
-## Theming
+## ~~Theming~~
 By default akyral-code uses the `github` theme, you may declare another one by setting the theme
 attribute. You can reference [components/highlightjs](https://github.com/components/highlightjs/tree/master/styles)
 for other themes.
@@ -38,118 +39,73 @@ Example:
         ...
     </code>
 
-@element akyral-code
-@blurb Code highlighting web component built with highlightjs
-@demo http://filaraujo.github.io/akyral.io/code/index.html
-@homepage https://github.com/filaraujo/akyral-code
+@demo
 -->
+<dom-module id="akyral-code">
 
-<polymer-element name="akyral-code" extends="code">
-    <template>
-        <style>
-            :host{
-                display: block;
-            }
+  <style>
+    :host{
+        display: block;
+    }
 
-            pre {
-                margin: 0;
-                padding: 0 !important;
-            }
-        </style>
+    pre {
+        margin: 0;
+        padding: 0 !important;
+    }
+  </style>
 
-        <pre id="code" class="{{ type }}"></pre>
-    </template>
-    <script>
-        (function(){
-            var authors = ['Filipe Araujo'],
+  <template>
+    <pre id="code" class="{{ type }}"></pre>
+  </template>
 
-                stylesheet = document.createElement('link');
+</dom-module>
 
-            // setup stylesheet
-            stylesheet.type = 'text/css';
-            stylesheet.rel = 'stylesheet';
+<script>
 
-            // config hljs
-            window.hljs.configure({
-                tabReplace: '  ',
-            });
+  (function(){
+    var author = {
+      name: 'Filipe Araujo',
+      github: 'github.com/filaraujo'
+    };
 
-            Polymer('akyral-code', {
 
-                /**
-                 * The `author` attribute defines the initial author, setting
-                 * this value will add another author
-                 *
-                 * @attribute author
-                 * @type string
-                 * @default 'Filipe Araujo'
-                 */
-                set author(name){
-                    if(authors.indexOf(name) > 0){
-                        return;
-                    }
-                    authors = [].concat.apply(authors, [name]);
-                },
+    Polymer({
 
-                get author(){
-                    return authors;
-                },
+      is: 'akyral-code',
 
-                publish: {
+      extends: 'code',
 
-                    /**
-                     * The `theme` will set the theme of highlightjs
-                     * https://github.com/components/highlightjs/tree/master/styles
-                     *
-                     * @attribute theme
-                     * @type string
-                     * @default 'github'
-                     */
-                     theme: 'github',
+      properties: {
+        /**
+         * The `author` property defines the initial author, setting
+         * this value will add another author
+         */
+        author: {
+          readOnly: true,
+          type: Object,
+          value: function() {
+            return author;
+          }
+        },
 
-                     /**
-                     * The `type` will set the type on highlight
-                     *
-                     * @attribute type
-                     * @type string
-                     * @default undefined
-                     */
-                     type: undefined
-                },
+        type: {
+          type: Object
+        }
+      },
 
-                /**
-                 * The `<akyral-code>` element has been attached to DOM. It will create a
-                 * stylesheet and convert content into highlighted content.
-                 *
-                 * @method attached
-                 */
-                attached: function(){
-                    var styles = stylesheet.cloneNode(),
-                        observer;
+      codify: function(){
+        this.$.code.innerHTML = Polymer.dom(this).innerHTML;
+        window.hljs.highlightBlock(this.$.code);
+      },
 
-                    styles.href = '../highlightjs/styles/'+this.theme+'.css';
 
-                    this.shadowRoot.appendChild(styles);
-                    this.element.convertSheetsToStyles(this.shadowRoot);
+      // LIFECYCLE EVENTS
 
-                    observer = new MutationObserver(function() {
-                        this.job('akyral-code-highlight', this.highlight, 250);
-                    }.bind(this));
+      attached: function() {
+        this.codify();
+      }
 
-                    observer.observe(this, {
-                        childList: true,
-                        characterData: true,
-                        subtree: true
-                    });
+    });
+  }());
 
-                    this.highlight();
-                },
-
-                highlight: function(){
-                    this.$.code.innerHTML = this.innerHTML;
-                    window.hljs.highlightBlock(this.$.code);
-                },
-            });
-        }());
-    </script>
-</polymer-element>
+</script>

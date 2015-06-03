@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <head>
+
+    <script>
+      window.location = 'http://filaraujo.github.io/akyral.io/code/index.html';
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>akyral-layout Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../akyral-code.html">
+
+  </head>
+  <body>
+
+    <code is="akyral-code">
+        function $initHighlight(block, cls) {
+          try {
+            if (cls.search(/\bno\-highlight\b/) != -1)
+              return process(block, true, 0x0F) +
+                     ' class=""';
+          } catch (e) {
+            /* handle exception */
+          }
+          for (var i = 0 / 2; i < classes.length; i++) {
+            if (checkCondition(classes[i]) === undefined)
+              return /\d+[\s/]/g;
+          }
+        }
+    </code>
+
+
+
+    <code is="akyral-code" theme="zenburn" type="html">
+      <pre>
+
+        &lt;!DOCTYPE html&gt;
+        &lt;title&gt;Title&lt;/title&gt;
+
+        &lt;body&gt;
+          &lt;p checked class=&quot;title&quot; id=&#39;title&#39;&gt;Title&lt;/p&gt;
+          &lt;markup data=&quot;{ 'something': 'blah', 'somethingElse': 'foo' }&quot;&gt; &lt;/markup&gt;
+        &lt;/body&gt;
+      </pre>
+
+    </code>
+
+    <code is="akyral-code" theme="arta">
+        @font-face {
+          font-family: Chunkfive; src: url('Chunkfive.otf');
+        }
+
+        body, .usertext {
+          color: #F0F0F0; background: #600;
+          font-family: Chunkfive, sans;
+        }
+
+        @import url(print.css);
+        @media print {
+          a[href^=http]::after {
+            content: attr(href)
+          }
+        }
+    </code>
+
+
+    <code is="akyral-code" theme="obsidian">
+        {
+           "glossary":{
+              "title":"example glossary",
+              "GlossDiv":{
+                 "title":"S",
+                 "GlossList":{
+                    "GlossEntry":{
+                       "ID":"SGML",
+                       "SortAs":"SGML",
+                       "GlossTerm":"Standard Generalized Markup Language",
+                       "Acronym":"SGML",
+                       "Abbrev":"ISO 8879:1986",
+                       "GlossDef":{
+                          "para":"A meta-markup language, used to create markup languages such as DocBook.",
+                          "GlossSeeAlso":[
+                             "GML",
+                             "XML"
+                          ]
+                       },
+                       "GlossSee":"markup"
+                    }
+                 }
+              }
+           }
+        }
+    </code>
+
+  </body>
+</html>
