@@ -88,16 +88,24 @@ Example:
           }
         },
 
+        /**
+         * The `content` attribute set the text content of the element
+         */
+        content: {
+          observer: 'codify',
+          type: String,
+          value: undefined
+        },
+
         type: {
-          type: Object
+          type: String
         }
       },
 
       codify: function(){
-        this.$.code.innerHTML = Polymer.dom(this).innerHTML;
+        this.$.code.innerHTML = this.content || Polymer.dom(this).innerHTML;
         window.hljs.highlightBlock(this.$.code);
       },
-
 
       // LIFECYCLE EVENTS
 

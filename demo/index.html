@@ -95,5 +95,22 @@
         }
     </code>
 
+    <template is="dom-bind">
+      <code is="akyral-code" content="{{stringify(data)}}"></code>
+    </template>
+
+    <script>
+      var tmpl = document.querySelector('template[is="dom-bind"]');
+
+      tmpl.data = {
+        "test": "test"
+      };
+
+      tmpl.stringify = function() {
+        return JSON.stringify(tmpl.data, null, 2);
+      }
+    </script>
+
+
   </body>
 </html>
